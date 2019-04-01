@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ParrotCard from "./components/ParrotCard/parrot";
+import Header from "./components/Header"
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import parrots from "./parrots.json";
@@ -11,7 +12,7 @@ class App extends Component {
     clickedParrotIDs: [],
     score: 0,
     topScore: 12,
-    status: ""
+    // status: ""
   }
 
 
@@ -24,16 +25,17 @@ class App extends Component {
       this.setState({
         clickedParrotIDs: [],
         score: 0,
-        status: "You lost loser!!!! Click on an image to try again"
+        status: "You lost loser!!!! Click on an image to try again."
       })
       return
     } else {
       clickedParrotIDs.push(id)
     }
+   
 
     if (clickedParrotIDs === 12) {
       this.setState({
-        score: 12,
+        score: 0,
         status: "You won! Your memory is on fleek.",
         clickedParrotIDs: []
       });
@@ -56,28 +58,14 @@ class App extends Component {
 
   };
 
-
-
-  //for (let i = parrots.length - 1; i > 0; i--) {
-  //   let j = Math.floor(Math.random() * (i + 1));
-  //   [parrots[i], parrots[j]] = [parrots[j], parrots[i]];
-  // };
-
-
-  Score = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const parrots = this.state.parrots.filter(parrot => parrot.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ parrots });
-  };
-
-  // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
       <Wrapper>
-        {/* <Header>
-          <h1>P</h1>
-        </Header> */}
+        <Header>
+        <p style={{textAlign: "center"}}>Test your memory! You can only click an image once. It's harder than you think. Score of 12 wins the game.</p>
+          <h2 style={{textAlign: "center"}}>Score: {this.state.score} | Score to meet: {this.state.topScore}</h2>
+          <h3 style={{textAlign: "center", color: "red"}}>{this.state.status}</h3>
+        </Header>
         <Title>Clicky Parrot Shuffle</Title>
         {this.state.parrots.map(parrot => (
           <ParrotCard
@@ -107,31 +95,3 @@ export default App;
 
 
 
-// import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <p>
-//             Edit <code>src/App.js</code> and save to reload.
-//           </p>
-//           <a
-//             className="App-link"
-//             href="https://reactjs.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Learn React
-//           </a>
-//         </header>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
