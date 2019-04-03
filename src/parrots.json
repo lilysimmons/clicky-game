@@ -32,7 +32,7 @@
   {
     "id": 7,
     "name": "parrot7",
-    "image": "/img/parrot7.jpeg"
+    "image": "./img/parrot7.jpeg"
   },
   {
     "id": 8,
