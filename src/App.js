@@ -61,7 +61,7 @@ class App extends Component {
     return (
       <Wrapper>
         <Header>
-        <p style={{textAlign: "center"}}>Test your memory! You can only click an image once. Score of 12 wins the game.</p>
+        <p style={{textAlign: "center"}}>Test your memory! You can only click an image once. It's harder than you think. Score of 12 wins the game.</p>
           <h2 style={{textAlign: "center"}}>Score: {this.state.score} | Score to meet: {this.state.topScore}</h2>
           <h3 style={{textAlign: "center", color: "red"}}>{this.state.status}</h3>
         </Header>
