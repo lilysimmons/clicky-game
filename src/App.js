@@ -6,13 +6,12 @@ import Title from "./components/Title";
 import parrots from "./parrots.json";
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
   state = {
     parrots,
     clickedParrotIDs: [],
     score: 0,
     topScore: 12,
-    // status: ""
+    status: ""
   }
 
 
@@ -20,7 +19,7 @@ class App extends Component {
   shuffle = (id) => {
     console.log("CAW CAW")
     let clickedParrotIDs = this.state.clickedParrotIDs;
-
+      
     if (clickedParrotIDs.includes(id)) {
       this.setState({
         clickedParrotIDs: [],
@@ -29,17 +28,17 @@ class App extends Component {
       })
       return
     } else {
-      clickedParrotIDs.push(id)
+      clickedParrotIDs.push(id);
     }
    
 
-    if (clickedParrotIDs === 12) {
+    if (clickedParrotIDs.length === this.state.parrots.length) {
       this.setState({
         score: 0,
-        status: "You won! Your memory is on fleek.",
+        // status: "You won! Your memory is on fleek.",
         clickedParrotIDs: []
-      });
-      alert("Play again?");
+      }); 
+        alert("You won! Your memory is on fleek. Play again?");
       return
     }
 
@@ -69,14 +68,11 @@ class App extends Component {
         <Title>Clicky Parrot Shuffle</Title>
         {this.state.parrots.map(parrot => (
           <ParrotCard
-            // removeFriend={this.removeParrot}
             shuffle={this.shuffle}
             id={parrot.id}
             key={parrot.id}
             // name={parrot.name}
             image={parrot.image}
-          // occupation={parrot.occupation}
-          // location={parrot.location}
           />
         ))}
       </Wrapper>
